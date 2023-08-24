@@ -1,7 +1,7 @@
 import { Field } from "formik";
 import { FormError } from "@/components/forms/error/form-error";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import React, { useRef } from "react";
 import { Label } from "@/components/forms/inputs/label/label";
 
 export type TextFieldProps = {
@@ -19,18 +19,15 @@ export type TextFieldProps = {
 
 export const labelVariants = {
   up: {
-    y: 4,
-    background: "white",
-    marginLeft: 10,
-    paddingLeft: 10,
+    y: 0,
+    marginLeft: 0,
     transition: {
       duration: 0.2,
     },
   },
   down: {
-    y: 29,
-    marginLeft: 10,
-    paddingLeft: 15,
+    y: 30,
+    marginLeft: 0,
   },
 };
 
@@ -38,7 +35,7 @@ export const TextField = ({
   name,
   type,
   label,
-  onChange,
+  placeholder,
   clearable,
   required,
   className,
@@ -46,9 +43,9 @@ export const TextField = ({
   const [touched, setTouched] = React.useState<any>([]);
 
   return (
-    <Field as name={name} required={required} type={type}>
-      {({ field, form: { errors, setFieldValue } }: any) => {
-        if (field?.value && !touched.includes(field?.name)) {
+    <Field name={name} required={required} type={type}>
+      {({ field, form: { setFieldValue, errors, ...props }, meta }: any) => {
+        if ((placeholder || meta?.value) && !touched.includes(field?.name)) {
           setTouched([...touched, field?.name]);
         }
 
@@ -57,7 +54,7 @@ export const TextField = ({
             <div
               className="w-full h-full relative flex items-center"
               onBlur={() =>
-                !field?.value
+                !meta?.value
                   ? setTouched(
                       touched.filter((el: string) => el !== field?.name),
                     )
@@ -67,20 +64,20 @@ export const TextField = ({
               <input
                 onFocus={() => setTouched([...touched, field?.name])}
                 id={name}
+                placeholder={placeholder}
                 className={`
-              w-full h-full border-2 border-gray-100 rounded-lg px-5 outline-0
-              ${className}  ${
-                !!errors[field?.name] && "text-red-500 border-b-red-500"
-              }`}
-                onChange={(e) => {
-                  setFieldValue(field.name, e.target.value, true);
-                  onChange && onChange(e);
-                }}
+              w-full h-full bg-transparent border-b-2 border-b-gray-100 text-lg outline-0 pr-12 truncate placeholder:text-gray-300
+              ${className} 
+             
+               ${meta?.error && "text-red-500 border-b-red-500"}`}
+                {...field}
               />
-              {clearable && field.value && (
+              {clearable && meta?.value && (
                 <XMarkIcon
                   onClick={() => {
-                    setFieldValue(field.name, "", false);
+                    props.handleChange({
+                      target: { id: field.name, value: "" },
+                    });
                     setTouched(
                       touched.filter((el: string) => el !== field?.name),
                     );
@@ -94,10 +91,10 @@ export const TextField = ({
                 animate={touched.includes(field?.name) ? "up" : "down"}
                 variants={labelVariants}
                 htmlFor={name}
-                hasError={!!errors[field?.name]}
+                hasError={!!meta?.error}
               />
 
-              <FormError error={errors[field.name]} />
+              <FormError error={meta?.error} />
             </div>
           </div>
         );

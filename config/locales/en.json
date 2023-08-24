@@ -1,106 +1,11 @@
 {
-  "app": {
-    "name": "Talent Plexus"
-  },
-  "candidates": {
+  "resume": {
     "form": {
-      "city": "City",
-      "email": "Email",
-      "name": "Name",
-      "phone": "Phone",
-      "seniority": "Seniority",
-      "surname": "Surname",
-      "title": "New candidate"
-    },
-    "list": {
-      "city": "City",
-      "email": "Email",
-      "name": "Name",
-      "phone": "Phone",
-      "title": "Candidates"
-    },
-    "new": "New candidate",
-    "page": {
-      "description": "List of candidates",
-      "title": "Candidates list"
-    },
-    "title": "Candidates"
-  },
-  "errors": {
-    "getting": {
-      "priorities": "Error getting priorities",
-      "requests": "Error getting requests",
-      "skills": "Error getting skills",
-      "states": "Error getting states"
-    },
-    "notFound": "Not found",
-    "unknown": "Unknown error"
-  },
-  "form": {
-    "cancel": "Cancel",
-    "email": "Email is not valid",
-    "required": "{name} field is required"
-  },
-  "masonry": {
-    "data": {
-      "empty": "No results"
-    }
-  },
-  "menu": {
-    "candidates": {
-      "new": "New candidate",
-      "title": "Candidates"
-    },
-    "home": "Home",
-    "requests": {
-      "new": "New request",
-      "title": "Requests"
-    }
-  },
-  "priorities": {
-    "priority:medium": "Medium",
-    "priority_high": "High",
-    "priority_low": "Low"
-  },
-  "requests": {
-    "form": {
-      "area": "Area",
-      "client": "Client",
-      "department": "Department",
-      "details": "Details",
-      "expiryDate": "Expiry date",
-      "quantity": "Quantity",
-      "searchSkills": "Search for skills, languages...",
-      "state": "State",
-      "submit": "Request",
-      "title": "Request title"
-    },
-    "list": {
-      "title": "Requests"
-    },
-    "modal": {
-      "button": {
-        "approve": "Approve",
-        "reject": "Reject"
-      },
-      "message": {
-        "approve": "Are you sure you want to approve this request?",
-        "reject": "Are you sure you want to reject this request?"
-      },
-      "title": {
-        "approve": "Approve request",
-        "reject": "Reject request"
+      "steps": {
+        "resume": {
+          "title": "Datos del curriculum"
+        }
       }
-    },
-    "new": "New request",
-    "title": "New request"
-  },
-  "select": {
-    "noOptions": "No options"
-  },
-  "states": {
-    "status_approved": "Approved",
-    "status_pending_approval": "Pending approval",
-    "status_rejected": "Rejected"
+    }
   }
 }

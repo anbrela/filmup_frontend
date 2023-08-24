@@ -1,30 +1,32 @@
-import React from 'react'
-import { useIntl } from '@/shared/hooks/intl/use-intl'
-import { Formik, Form as FormikForm } from 'formik'
-import { useForm } from '@/shared/hooks/form/use-form'
+import React from "react";
+import { useIntl } from "@/shared/hooks/intl/use-intl";
+import { Formik, Form as FormikForm } from "formik";
+import { useForm } from "@/shared/hooks/form/use-form";
 
 type FormProps = {
-  onValidate?: (values: any) => void
-  defaultValues: any
-  onSubmit: (values: any) => void
-  onChange?: (values: any) => void
-  validateOnChange?: boolean
-  validateOnBlur?: boolean
-  children: React.ReactNode
-}
+  onValidate?: (values: any) => void;
+  defaultValues: any;
+  onSubmit: (values: any) => void;
+  onChange?: (values: any) => void;
+  validateOnChange?: boolean;
+  className?: string;
+  validateOnBlur?: boolean;
+  children: React.ReactNode;
+};
 
 export const Form = ({
   onValidate,
   onSubmit,
   defaultValues,
   validateOnChange,
+  className,
   onChange,
   validateOnBlur,
   children,
   ...props
 }: FormProps) => {
-  const { formatMessage } = useIntl()
-  const { validationSchema } = useForm({ children, formatMessage })
+  const { formatMessage } = useIntl();
+  const { validationSchema } = useForm({ children, formatMessage });
 
   return (
     <Formik
@@ -37,7 +39,7 @@ export const Form = ({
       onSubmit={onSubmit}
       {...props}
     >
-      {() => <FormikForm>{children}</FormikForm>}
+      <FormikForm className={className}>{children}</FormikForm>
     </Formik>
-  )
-}
+  );
+};

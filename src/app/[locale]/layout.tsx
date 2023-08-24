@@ -6,7 +6,6 @@ import './globals.css'
 import { ConfigProvider } from '@/components/config/config-provider'
 import { SWRProvider } from '@/shared/utils/api/swr-provider'
 import { NotificationsProvider } from '@/components/notifications/notifications-provider'
-import { AppLayout } from '@/components/layout/AppLayout'
 
 export function generateStaticParams() {
   return [{ locale: 'es' }, { locale: 'en' }]
@@ -29,9 +28,7 @@ export default async function LocaleLayout({
         <ConfigProvider>
           <SWRProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <AppLayout lang={locale}>
                 <NotificationsProvider>{children}</NotificationsProvider>
-              </AppLayout>
             </NextIntlClientProvider>
           </SWRProvider>
         </ConfigProvider>
