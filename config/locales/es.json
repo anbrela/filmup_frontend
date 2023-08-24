@@ -1,0 +1,106 @@
+{
+  "app": {
+    "name": "Talento Plexus"
+  },
+  "candidates": {
+    "form": {
+      "city": "Ciudad",
+      "email": "Email",
+      "name": "Nombre",
+      "phone": "Teléfono",
+      "seniority": "Seniority",
+      "surname": "Apellidos",
+      "title": "Nuevo candidato"
+    },
+    "list": {
+      "city": "Ciudad",
+      "email": "Correo electrónico",
+      "name": "Nombre",
+      "phone": "Teléfono",
+      "title": "Candidatos"
+    },
+    "new": "Nuevo candidato",
+    "page": {
+      "description": "Listado de candidatos",
+      "title": "Listado de candidatos"
+    },
+    "title": "Candidatos"
+  },
+  "errors": {
+    "getting": {
+      "priorities": "Ha ocurrido un error al obtener las prioridades.",
+      "requests": "Ha ocurrido un error al obtener las solicitudes.",
+      "skills": "Ha ocurrido un error al obtener las habilidades.",
+      "states": "Ha ocurrido un error al obtener los estados."
+    },
+    "notFound": "No se ha encontrado el recurso solicitado.",
+    "unknown": "Ha ocurrido un error desconocido."
+  },
+  "form": {
+    "cancel": "Cancelar",
+    "email": "Escribe un correo electrónico válido.",
+    "required": "El campo {name} es obligatorio."
+  },
+  "masonry": {
+    "data": {
+      "empty": "No se encontraron resultados."
+    }
+  },
+  "menu": {
+    "candidates": {
+      "list": "Candidatos",
+      "new": "Nuevo candidato"
+    },
+    "home": "Inicio",
+    "requests": {
+      "list": "Solicitudes",
+      "new": "Nueva solicitud"
+    }
+  },
+  "priorities": {
+    "priority_high": "Alta",
+    "priority_low": "Baja",
+    "priority_medium": "Media"
+  },
+  "requests": {
+    "form": {
+      "area": "Área",
+      "client": "Cliente",
+      "department": "Departamento",
+      "details": "Detalles",
+      "expiryDate": "Fecha de expiración",
+      "quantity": "Cantidad",
+      "searchSkills": "Busca habilidades, lenguages...",
+      "state": "Estado",
+      "submit": "Solicitar",
+      "title": "Título de la solicitud"
+    },
+    "list": {
+      "title": "Solicitudes"
+    },
+    "modal": {
+      "button": {
+        "approve": "Aprobar",
+        "reject": "Rechazar"
+      },
+      "message": {
+        "approve": "¿Estás seguro de que quieres aprobar esta solicitud?",
+        "reject": "¿Estás seguro de que quieres rechazar esta solicitud?"
+      },
+      "title": {
+        "approve": "Aprobar solicitud",
+        "reject": "Rechazar solicitud"
+      }
+    },
+    "new": "Nueva solicitud",
+    "title": "Nueva solicitud"
+  },
+  "select": {
+    "noOptions": "No hay opciones disponibles."
+  },
+  "states": {
+    "status_approved": "Aprobado",
+    "status_pending_approval": "Pendiente de aprobación",
+    "status_rejected": "Rechazado"
+  }
+}
