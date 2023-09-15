@@ -1,11 +1,10 @@
-'use client'
+"use client";
+import LoginButtons from "@/components/forms/inputs/login-buttons";
 
 export const HomePage = ({ locale }: { locale: string }) => {
   return (
-    <div
-      className="h-screen w-full flex items-center justify-center"
-    >
-      hello
+    <div className="w-full h-full  flex items-center justify-center">
+      <LoginButtons />
     </div>
-  )
-}
+  );
+};

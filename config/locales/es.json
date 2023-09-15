@@ -1,43 +1,11 @@
 {
-  "form": {
-    "required": "Este campo es obligatorio",
-    "back": "Volver",
-    "next": "Siguiente",
-    "email": "El email introducido no es válido"
+  "menu": {
+    "popular": "Popular",
+    "discover": "Descubrir",
+    "profile": "Tu Perfil",
+    "search": "Buscar"
   },
-  "resume": {
-    "form": {
-      "steps": {
-        "modal": {
-            "title": "¿Estás seguro?",
-            "message": "Si vuelves atrás perderás los datos introducidos hasta el momento",
-            "cancel": "Cancelar",
-            "accept": "Aceptar"
-        },
-        "resume": {
-          "title": "Datos del curriculum",
-          "titleField": "Ponle un nombre al currículum",
-          "description": "¿Descripción? (opcional)"
-        },
-        "personal": {
-          "title": "Tus datos de contacto",
-          "name": "Tu nombre",
-          "surname": "Apellidos",
-          "email": "Email",
-          "phone": "Teléfono",
-          "description": "¡Véndete como tú sabes!"
-
-        },
-        "experience": {
-          "title": "Experiencia laboral"
-        },
-        "studies": {
-          "title": "Formación académica",
-          "titleField": "Nombre del título",
-          "place": "Centro",
-          "year": "Año"
-        }
-      }
-    }
+  "search": {
+    "clear": "Borrar"
   }
 }

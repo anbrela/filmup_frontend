@@ -16,9 +16,5 @@ export const Column = ({ children, className, size }: ColumnProps) => {
     }
   };
 
-  return (
-    <div className={`mt-3 h-14 mb-9 ${getSize(size)} ${className}`}>
-      {children}
-    </div>
-  );
+  return <div className={`h-14 ${getSize(size)} ${className}`}>{children}</div>;
 };

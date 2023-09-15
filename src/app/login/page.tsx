@@ -12,7 +12,9 @@ const Login = () => {
   useEffect(() => {
     if (token) {
       loginByToken(token)
-        .then((res) => console.log("res", res))
+        .then(() => {
+          router.push("/");
+        })
         .finally(() => setLoading(false));
     }
   }, [token]);

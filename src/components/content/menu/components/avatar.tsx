@@ -1,42 +1,29 @@
-import React from 'react'
-import { BellIcon } from '@heroicons/react/24/outline'
+import React from "react";
+import { BellIcon } from "@heroicons/react/24/outline";
 type User = {
-  name: string
-  email: string
-}
+  username: string;
+};
 
 type AvatarProps = {
-  user: User
-  bigMenu: boolean
-}
+  user: User;
+};
 
-export const Avatar = ({ user, bigMenu }: AvatarProps) => {
-  const initial = user?.name?.charAt(0) || ''
+export const Avatar = ({ user }: AvatarProps) => {
+  const initial = user?.username?.charAt(0) || "";
 
   return (
     <div
       className={`
-      pt-6
-      ${
-        !bigMenu
-          ? 'flex space-y-3 flex-col'
-          : 'flex items-center justify-between '
-      }`}
+      pt-6 flex space-y-3 flex-col`}
     >
-      <div className={` flex items-center space-x-3 justify-center`}>
+      <div className={` flex flex-col items-center space-y-3 justify-center`}>
         <div
-          className={`cursor-pointer hover:scale-110 w-10 h-10 rounded-full bg-yellow-200 flex items-center justify-center font-semibold`}
+          className={`cursor-pointer hover:scale-110 w-20 h-20 rounded-full bg-secondary flex text-3xl items-center justify-center font-semibold`}
         >
           {initial}
         </div>
-        <div className={`${!bigMenu ? 'hidden' : 'flex flex-col'}`}>
-          <span className="font-bold text-white">{user.name}</span>
-          <span className="text-xs text-gray-400">{user.email}</span>
-        </div>
-      </div>
-      <div className={`flex items-center justify-center`}>
-        <BellIcon className="w-8 h-8 hover:scale-110 cursor-pointer text-white" />
+        <span className="font-bold text-white">{user?.username}</span>
       </div>
     </div>
-  )
-}
+  );
+};

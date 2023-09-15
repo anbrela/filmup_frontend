@@ -1,22 +1,21 @@
 export const fetcherHandler = async (response: Response) => {
-  const data = await response?.json()
-
   if (!response.ok) {
-    return Promise.reject(data)
+    return Promise.reject(response);
   }
 
-  return data
-}
+  return response;
+};
 
 type fetcherOptions = {
-  method: string
-}
+  method: string;
+  headers?: any;
+  body?: any;
+};
 
 export const fetcher = (path: string, options: fetcherOptions) => {
-  const url = `${process.env.API_URL}${path}`
-
-  return fetch(url, options).then(fetcherHandler)
-}
+  const url = `http://localhost:8080${path}`;
+  return fetch(url, options).then(fetcherHandler);
+};
 
 export const swrOptions = {
   shouldRetryOnError: false,
@@ -25,4 +24,4 @@ export const swrOptions = {
   refreshWhenOffline: false,
   refreshWhenHidden: false,
   refreshInterval: 0,
-}
+};

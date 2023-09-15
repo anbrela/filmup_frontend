@@ -1,43 +1,33 @@
 import {
-  HomeIcon,
-  ClipboardDocumentIcon,
+  UserIcon,
   PlusIcon,
-  UsersIcon,
-} from '@heroicons/react/24/outline'
+  MagnifyingGlassIcon,
+  FilmIcon,
+} from "@heroicons/react/24/outline";
 
 export const menuRoutes = ({ lang }: { lang: string }) => [
   {
-    id: 0,
-    label: 'menu.home',
-    icon: HomeIcon,
+    id: 1,
+    label: "menu.profile",
+    icon: UserIcon,
     path: `/${lang}`,
   },
   {
-    id: 1,
-    label: 'menu.requests.list',
-    icon: ClipboardDocumentIcon,
-    path: `/${lang}/requests`,
-    children: [
-      {
-        id: 1,
-        label: 'menu.requests.new',
-        icon: PlusIcon,
-        path: `/${lang}/requests/new`,
-      },
-    ],
+    id: 2,
+    label: "menu.popular",
+    icon: FilmIcon,
+    path: `/${lang}/movies/popular`,
   },
   {
-    id: 2,
-    label: 'menu.candidates.list',
-    icon: UsersIcon,
-    path: `/${lang}/candidates`,
-    children: [
-      {
-        id: 1,
-        label: 'menu.candidates.new',
-        icon: PlusIcon,
-        path: `/${lang}/candidates/new`,
-      },
-    ],
+    id: 3,
+    label: "menu.discover",
+    icon: PlusIcon,
+    path: `/${lang}/discover`,
   },
-]
+  {
+    id: 4,
+    label: "menu.search",
+    icon: MagnifyingGlassIcon,
+    path: `/${lang}/search`,
+  },
+];

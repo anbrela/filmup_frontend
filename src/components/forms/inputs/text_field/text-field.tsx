@@ -13,6 +13,7 @@ export type TextFieldProps = {
   inputProps?: any;
   clearable?: boolean;
   onChange?: any;
+  disabled?: boolean;
   value?: any;
   required?: boolean;
 };
@@ -36,6 +37,7 @@ export const TextField = ({
   type,
   label,
   placeholder,
+  disabled,
   clearable,
   required,
   className,
