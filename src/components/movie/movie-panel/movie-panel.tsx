@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { Poster } from "@/components/movie/poster/poster";
+import { motion } from "framer-motion";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { discoverMovies, getProviders } from "@/shared/services/movie";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useNotifications } from "@/shared/hooks/notifications/use-notifications";
+import { useRouter, usePathname } from "next/navigation";
+
 import { Providers } from "@/components/movie/movie-panel/components/providers";
 import { formatProviders } from "./components/utils";
 import { MovieWrapper } from "./components/movie-wrapper";
+import { useProviders } from "@/shared/hooks/movie/use-providers";
+import { useIntl } from "@/shared/hooks/intl/use-intl";
 
 type MoviePanelProps = {
   movie: any;
@@ -17,29 +19,16 @@ type MoviePanelProps = {
 
 export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
   const [movies, setMovies] = useState<any[]>([]);
-  const [providers, setProviders] = useState<any[]>([]);
-  const [selectedProviders, setSelectedProviders] = useState<any[]>([]);
   const [page, setPage] = useState<number>(1);
-  const searchParams = useSearchParams();
-
   const router = useRouter();
   const pathname = usePathname();
-
-  const providersQuery = searchParams.get("providers");
-
   const toasts = useNotifications();
 
-  useEffect(() => {
-    if (visible) {
-      getProviders()
-        .then((res) => setProviders(res))
-        .catch(() =>
-          toasts.error({
-            message: "Error al recibir los proveedores",
-          })
-        );
-    }
-  }, [visible]);
+  const { providers, providersQuery, searchParams, selectedProviders } =
+    useProviders({
+      toasts,
+      visible,
+    });
 
   useEffect(() => {
     if (providersQuery) {
@@ -56,17 +45,10 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
     }
   }, [providersQuery]);
 
-  useEffect(() => {
-    const selectedProviders = providersQuery?.split(",");
-    const parsedProviders = selectedProviders?.map((id) => parseInt(id));
-    if (parsedProviders?.length || parsedProviders?.length === 0) {
-      setSelectedProviders(parsedProviders);
-    }
-
-    if (!providersQuery) {
-      setSelectedProviders([]);
-    }
-  }, [providers, providersQuery]);
+  const removeMovie = (id: number) => {
+    const newMovies = movies.filter((movie) => movie.id !== id);
+    setMovies(newMovies);
+  };
 
   if (!visible) {
     return null;
@@ -94,12 +76,12 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
         />
 
         <XMarkIcon
-          className="w-10 h-10 text-gray-100 cursor-pointer hover:scale-125"
+          className="w-10 h-10 text-gray-400 cursor-pointer hover:scale-125"
           onClick={() => setPanelVisible(false)}
         />
       </div>
 
-      <MovieWrapper movies={movies} setMovies={setMovies} />
+      <MovieWrapper movies={movies} removeMovie={removeMovie} />
     </motion.div>
   );
 };

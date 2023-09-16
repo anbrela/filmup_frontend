@@ -98,8 +98,15 @@ input:-webkit-autofill:active{
 }
 
 .xxl_poster {
-  height: 90%;
+  height: 80%;
   aspect-ratio: 2/3;
   object-fit: cover;
   object-position: center;
+}
+
+
+.movie_drop_shadow {
+  -webkit-box-shadow: inset 82px 3px 102px 29px rgba(17, 24, 39, 1);
+-moz-box-shadow: inset 82px 3px 102px 29px rgba(17, 24, 39, 1);
+box-shadow: inset 82px 3px 102px 29px rgba(17, 24, 39, 1);
 }

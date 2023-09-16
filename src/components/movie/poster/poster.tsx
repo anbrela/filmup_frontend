@@ -22,6 +22,8 @@ export const getPosterSize = (posterSize: any) => {
 
 export const getPosterQuality = (posterSize: any) => {
   switch (posterSize) {
+    case "original":
+      return process.env.NEXT_PUBLIC_TMDB_IMAGE_URL_original;
     case "large":
       return process.env.NEXT_PUBLIC_TMDB_IMAGE_URL_w500;
     default:
