@@ -15,3 +15,16 @@ export const getPopular = ({ page }: { page: number }) => {
 export const getProviders = () => {
   return get(`/api/movies/providers`).then((res) => res.json());
 };
+
+type discoverProps = {
+  page: number;
+  providers?: string;
+}
+
+export const discoverMovies = ({page, providers}: discoverProps) => {
+
+  if(providers) {
+    return get(`/api/movies/discover?page=${page}&providers=${providers}`).then((res) => res.json());
+  }
+  return get(`/api/movies/discover?page=${page}`).then((res) => res.json());
+}

@@ -96,3 +96,10 @@ input:-webkit-autofill:active{
 .sidebar {
   min-width: 14rem !important;
 }
+
+.xxl_poster {
+  height: 90%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  object-position: center;
+}
