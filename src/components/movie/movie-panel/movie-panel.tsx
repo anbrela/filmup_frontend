@@ -6,6 +6,11 @@ import { getProviders } from "@/shared/services/movie";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useNotifications } from "@/shared/hooks/notifications/use-notifications";
 import { Providers } from "@/components/movie/movie-panel/components/providers";
+import { format } from "path";
+import { formatProviders } from "./components/utils";
+import { log } from "console";
+import TinderCard from "react-tinder-card";
+
 type MoviePanelProps = {
   movie: any;
   visible: boolean;
@@ -31,7 +36,7 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
         .catch(() =>
           toasts.error({
             message: "Error al recibir los proveedores",
-          }),
+          })
         );
     }
   }, [visible]);
@@ -50,6 +55,14 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
 
   const movie = {};
 
+  const onSwipe = (direction) => {
+    console.log("You swiped: " + direction);
+  };
+
+  const onCardLeftScreen = (myIdentifier) => {
+    console.log(myIdentifier + " left the screen");
+  };
+
   if (!visible) {
     return null;
   }
@@ -65,27 +78,16 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
         <Providers
           providers={providers}
           onClick={(id: number) => {
-            const allParams = searchParams.entries();
-            const obj = Object.fromEntries(allParams);
-
-            if (selectedProviders.includes(id)) {
-              const filteredProviders = selectedProviders.filter(
-                (providerId) => providerId !== id,
-              );
-              if (filteredProviders.length) {
-                obj.providers = filteredProviders.join(",");
-              } else {
-                delete obj.providers;
-              }
-            } else {
-              obj.providers = [...selectedProviders, id].join(",");
-            }
-
-            const params = new URLSearchParams(obj);
-            router.push(`${pathname}?${params.toString()}`);
+            const params = formatProviders({
+              searchParams,
+              selectedProviders,
+              id,
+            });
+            router.push(`${pathname}?${params}`);
           }}
           selectedProviders={selectedProviders}
         />
+
         <XMarkIcon
           className="w-10 h-10 text-gray-100 cursor-pointer hover:scale-125"
           onClick={() => setPanelVisible(false)}
@@ -93,7 +95,14 @@ export const MoviePanel = ({ visible, setPanelVisible }: MoviePanelProps) => {
       </div>
 
       <div className="w-4/6 flex items-center">
-        <Poster size="large" movie={movie} />
+        <TinderCard
+          onSwipe={onSwipe}
+          onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+          preventSwipe={["right", "left"]}
+        >
+          {" "}
+          <Poster size="large" movie={movie} />
+        </TinderCard>
       </div>
     </motion.div>
   );
